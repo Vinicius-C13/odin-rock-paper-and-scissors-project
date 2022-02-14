@@ -1,3 +1,7 @@
+
+for (let i = 0; i < 5; i++) {
+    // your code here!
+
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == null || ''){
@@ -27,6 +31,8 @@ function playRound(playerSelection, computerSelection) {
     
   }
 
+
+
   let randomNum = (Math.floor(Math.random()*(4 - 1) + 1))
 
   switch (randomNum) {
@@ -42,6 +48,10 @@ function playRound(playerSelection, computerSelection) {
         break;
   }
   
+
   const playerSelection = prompt('Choose between rock, paper and scissors');
   const computerSelection = computerPlay
   console.log(playRound(playerSelection, computerSelection));
+}
+
+
