@@ -1,74 +1,96 @@
-/*let playerScore = 0
-let compScore = 0
 
-function playRound(playerSelection, computerSelection) {  
 
-    //compares player's and computer's play and determine the winner. Them add a point to playerScore or compScore.
-    if (playerSelection == null || ''){
-        return alert('Cancelled')
-    }
-    
-    else if (playerSelection.toLowerCase() == 'rock' || playerSelection.toLowerCase() == 'paper' || playerSelection.toLowerCase() == 'scissors'){
-        if (playerSelection == computerSelection){
-            return 'tie'
-        }else if (
-            playerSelection.toLowerCase() == 'rock' && computerSelection == 'scissors' ||
-            playerSelection.toLowerCase() == 'paper' && computerSelection == 'rock' ||
-            playerSelection.toLowerCase() == 'scissors' && computerSelection == 'paper'
-        ) {
-            playerScore++
-            return `You won! ${playerSelection} beats ${computerSelection}.`
-        }
-        
-        else {
-            compScore++
-            return `You lost. ${computerSelection} beats ${playerSelection}.`
-        }
-    }
-    else{
-        return alert('Insert a valid value')
-    }
+// cash your DOM = Before you start you need to store some informations in variables to make your job easier.
+let userScore = 0;
+let computerScore = 0;
+const playerScore_span = document.getElementById('player-score');
+const computerScore_span = document.getElementById('computer-score');
+const scoreBoard_div = document.querySelector('.score');
+const result_div = document.getElementById('result');
+const rock_div = document.getElementById('rock');
+const paper_div = document.getElementById('paper');
+const scissors_div = document.getElementById('scissors');
 
-    
-    
-  }
 
-  //loop
-  for (let i = 0; i < 1; i) { //repeat the process until one of the players reach 3 points.
+function getComputerChoice() {
+    const choices = ['rock', 'paper', 'scissors'];
+    const randomNumber = Math.floor(Math.random()*3);
+    return choices[randomNumber];
+}
 
-    if (playerScore === 3){
-        alert('You won! Congratulations')
-        break;
-    }
-    else if (compScore === 3){
-        alert('You lost!')
-        break;
-    }
-    else{
-
-        let randomNum = (Math.floor(Math.random()*(4 - 1) + 1)) //This variable choose a number between 1 and 3, these numbers are converted into 'rock', 'paper' or 'scissors' values.
-
-        switch (randomNum) {
-
-            case 1:
-                computerPlay = 'rock'
-                break;
-            case 2:
-                computerPlay = 'paper'
-                break;
-            case 3:
-                computerPlay = 'scissors'
-                break;
-        }
-        
-
-        const playerSelection = prompt(`Choose between rock, paper and scissors\n Your Score: ${playerScore} | Computer Score: ${compScore} `);
-        const computerSelection = computerPlay
-        console.log(playRound(playerSelection, computerSelection)); // The playRound function, with the parameter values, executes the process of comparison of results again and again.
-        continue;
-    }
+//userPlay and computerPlay receive the values of userChoice e computerChoice.
+function win(userPlay, computerPlay) {
+    userScore++;
+    let userPlay_div = document.getElementById(userPlay);
+    playerScore_span.textContent = userScore;
+    computerScore_span.textContent = computerScore;
+    result_div.textContent = `${userPlay} beats ${computerPlay}. YOU WIN! `;
+    userPlay_div.classList.add('green-glow');
+    setTimeout(function(){userPlay_div.classList.remove('green-glow')}, 300)
 
 }
-*/
 
+
+function lose(userPlay, computerPlay) {
+    computerScore++;
+    let userPlay_div = document.getElementById(userPlay);
+    playerScore_span.textContent = userScore;
+    computerScore_span.textContent = computerScore;
+    result_div.textContent = `${userPlay} loses to ${computerPlay}. YOU LOST!`;
+    userPlay_div.classList.add('red-glow');
+    setTimeout(function(){userPlay_div.classList.remove('red-glow')}, 300)
+    
+}
+
+
+function draw(userPlay, computerPlay) {
+    let userPlay_div = document.getElementById(userPlay);
+    result_div.textContent = `${userPlay} equals ${computerPlay}.`;
+    userPlay_div.classList.add('blue-glow');
+    setTimeout(function(){userPlay_div.classList.remove('blue-glow')}, 300)
+    
+}
+
+
+function game(userChoice) {
+    const computerChoice = getComputerChoice()
+
+    switch (userChoice+computerChoice) {
+
+        case 'rockscissors':
+        case 'paperrock':
+        case 'scissorspaper':
+            win(userChoice, computerChoice);
+            break;
+        case 'scissorsrock':
+        case 'rockpaper':
+        case 'paperscissors':
+            lose(userChoice, computerChoice);
+            break;
+        case 'scissorsscissors':
+        case 'rockrock':
+        case 'paperpaper':
+            draw(userChoice, computerChoice);
+            break;
+    }
+    
+}
+
+function main () {
+
+rock_div.addEventListener('click', function(){
+    game('rock');
+});
+
+paper_div.addEventListener('click', function(){
+    game('paper');
+});
+
+scissors_div.addEventListener('click', function(){
+    game('scissors');
+});
+
+}
+
+main()
 
