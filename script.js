@@ -1,4 +1,4 @@
-let playerScore = 0
+/*let playerScore = 0
 let compScore = 0
 
 function playRound(playerSelection, computerSelection) {  
@@ -69,6 +69,6 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
-
+*/
 
 

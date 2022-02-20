@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Asap', sans-serif;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(20, 21, 26);
+}
+
+header {
+    padding: 20px;
+    background-color: white;
+}
+
+.score {
+    border: 3px solid white;
+    border-radius: 4px;
+    margin: 20px auto;
+    width: 200px;
+    position: relative;
+    color: white;
+}
+
+.tag {
+    background-color: red;
+    font-size:0.9em;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 2px;
+
+}
+
+#tag-you {
+    position: absolute;
+    top: 25px;
+    left: -18px;
+    padding: 1px 6.5px;
+}
+
+#tag-comp {
+    position: absolute;
+    top: 25px;
+    right: -22px;
+}
+
+span {
+    font-size: 60px;
+}
+
+.play-round {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.choices {
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    display: flex;
+    font-size: 64px;
+}
+
+.choice {
+    border: 4px solid white;
+    border-radius: 50%;
+    width: 82px;
+    transition: 0.3s;
+}
+
+.choice:hover {
+    cursor: pointer;
+    background-color: black;
+
+}
+
+.action-command {
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
